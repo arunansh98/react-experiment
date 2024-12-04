@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.test-class {
+  @apply text-[red] p-[1rem];
+}
+
+.text-class {
+  @apply border-[red] border-[1px];
+}
