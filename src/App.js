@@ -34,14 +34,20 @@ function App() {
     searchImages();
   }, []);
 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
-    <div className="test-class">
-      <div className="flex flex-row justify-center">
-        <Text value={searchTerm} onChange={setSearchTerm} />
-        <button onClick={searchImages}>SEARCH!</button>
+    <form onSubmit={handleSubmit}>
+      <div className="test-class">
+        <div className="flex flex-row justify-center">
+          <Text value={searchTerm} onChange={setSearchTerm} />
+          <button onClick={searchImages}>SEARCH!</button>
+        </div>
+        <Images images={images} />
       </div>
-      <Images images={images} />
-    </div>
+    </form>
   );
 }
 
