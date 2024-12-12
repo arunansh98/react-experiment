@@ -1,14 +1,22 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Text from "./components/Text";
 import axios from "axios";
 import Images from "./components/Images";
+import Button from "./components/Button";
 
 function App() {
+  console.log("parent component rendered!");
+
   const [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  function searchImages() {
-    console.log({ searchTerm });
+  useEffect(() => {
+    // console.log("useEffect running for the 1st time !");
+    searchImages();
+  }, []);
+
+  const searchImages = useCallback(() => {
+    // console.log({ searchTerm });
 
     const params = {
       client_id: "0KwJEPjKLZkzlMZXrdnCorDwE1_dlQBcygXbUBqcYYg",
@@ -20,19 +28,14 @@ function App() {
         params,
       })
       .then((response) => {
-        console.log({ response });
+        // console.log({ response });
         const images = response.data.results.map((item) => item.urls.small);
         setImages(images);
       })
       .finally(() => {
-        console.log("images loaded !!");
+        // console.log("images loaded !!");
       });
-  }
-
-  useEffect(() => {
-    console.log("useEffect running for the 1st time !");
-    searchImages();
-  }, []);
+  }, [searchTerm]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -43,7 +46,7 @@ function App() {
       <div className="test-class">
         <div className="flex flex-row justify-center">
           <Text value={searchTerm} onChange={setSearchTerm} />
-          <button onClick={searchImages}>SEARCH!</button>
+          <Button onClick={searchImages}>SEARCH!</Button>
         </div>
         <Images images={images} />
       </div>
