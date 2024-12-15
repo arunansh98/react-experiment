@@ -3,6 +3,7 @@ import Text from "./components/Text";
 import axios from "axios";
 import Images from "./components/Images";
 import Button from "./components/Button";
+import Count from "./components/Count";
 
 function App() {
   console.log("parent component rendered!");
@@ -49,6 +50,7 @@ function App() {
           <Button onClick={searchImages}>SEARCH!</Button>
         </div>
         <Images images={images} />
+        <Count />
       </div>
     </form>
   );
