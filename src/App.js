@@ -4,6 +4,8 @@ import axios from "axios";
 import Images from "./components/Images";
 import Button from "./components/Button";
 import Count from "./components/Count";
+import PropDrilling from "./components/prop-drilling-playground/PropDrliling";
+import Context from "./components/prop-drilling-playground/Context";
 
 function App() {
   console.log("parent component rendered!");
@@ -51,6 +53,8 @@ function App() {
         </div>
         <Images images={images} />
         <Count />
+        <PropDrilling />
+        <Context />
       </div>
     </form>
   );
