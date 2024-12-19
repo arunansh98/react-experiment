@@ -4,7 +4,7 @@ import axios from "axios";
 import Images from "./components/Images";
 import Button from "./components/Button";
 import Count from "./components/Count";
-import PropDrilling from "./components/prop-drilling-playground/PropDrliling";
+import PropDrilling from "./components/prop-drilling-playground/PropDrilling";
 import Context from "./components/prop-drilling-playground/Context";
 
 function App() {
