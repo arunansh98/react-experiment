@@ -1,0 +1,1 @@
+Playground for understanding the concepts of prop drilling and how to fix prop drilling using context 

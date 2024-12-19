@@ -1,0 +1,1 @@
+Playground for understanding the concepts of hoc (higher order components)
