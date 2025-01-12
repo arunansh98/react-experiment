@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import Count from "./components/Count";
 import PropDrilling from "./components/prop-drilling-playground/PropDrilling";
 import Context from "./components/prop-drilling-playground/Context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   console.log("parent component rendered!");
@@ -44,19 +45,32 @@ function App() {
     event.preventDefault();
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className="test-class">
-        <div className="flex flex-row justify-center">
-          <Text value={searchTerm} onChange={setSearchTerm} />
-          <Button onClick={searchImages}>SEARCH!</Button>
+  const Base = () => {
+    return (
+      <form onSubmit={handleSubmit}>
+        <div className="test-class">
+          <div className="flex flex-row justify-center">
+            <Text value={searchTerm} onChange={setSearchTerm} />
+            <Button onClick={searchImages}>SEARCH!</Button>
+          </div>
+          <Images images={images} />
+          <Count />
+          <PropDrilling />
+          <Context />
         </div>
-        <Images images={images} />
-        <Count />
-        <PropDrilling />
-        <Context />
-      </div>
-    </form>
+      </form>
+    );
+  };
+
+  const Secondary = () => "Secondary Component";
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" Component={Base}></Route>
+        <Route path="secondary" Component={Secondary}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
