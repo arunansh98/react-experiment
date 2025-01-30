@@ -7,6 +7,7 @@ import Count from "./components/Count";
 import PropDrilling from "./components/prop-drilling-playground/PropDrilling";
 import Context from "./components/prop-drilling-playground/Context";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Parent from "./components/hooks/forward-ref/Parent";
 
 function App() {
   console.log("parent component rendered!");
@@ -36,6 +37,9 @@ function App() {
         const images = response.data.results.map((item) => item.urls.small);
         setImages(images);
       })
+      .catch((error) => {
+        console.error({ error });
+      })
       .finally(() => {
         // console.log("images loaded !!");
       });
@@ -47,6 +51,7 @@ function App() {
 
   const Base = () => {
     return (
+      // <Parent />
       <form onSubmit={handleSubmit}>
         <div className="test-class">
           <div className="flex flex-row justify-center">
